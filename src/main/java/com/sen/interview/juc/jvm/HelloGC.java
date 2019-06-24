@@ -1,5 +1,8 @@
 package com.sen.interview.juc.jvm;
 
+import java.util.HashMap;
+import javax.print.DocFlavor.STRING;
+
 /**
  * <p>
  * 题目：如何查看一个正在运行java程序，某个jvm参数是否开启，具体值多少
@@ -28,10 +31,6 @@ package com.sen.interview.juc.jvm;
 public class HelloGC {
 
     public static void main(String[] args) {
-        while (true) {
-            System.gc();
-        }
-
     }
 
     /**

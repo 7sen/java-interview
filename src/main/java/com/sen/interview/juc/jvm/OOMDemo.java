@@ -20,7 +20,6 @@ import net.sf.cglib.proxy.MethodProxy;
 public class OOMDemo {
 
     public static void main(String[] args) {
-        showOutOfMemoryError5();
     }
 
     /**

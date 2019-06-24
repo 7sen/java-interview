@@ -1,4 +1,4 @@
-package com.sen.interview.juc.sync;
+package com.sen.interview.juc.aqs;
 
 import java.util.concurrent.CountDownLatch;
 
