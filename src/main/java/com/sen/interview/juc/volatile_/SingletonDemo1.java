@@ -2,7 +2,7 @@ package com.sen.interview.juc.volatile_;
 
 /**
  * <p>
- * 基于静态内部类: 内部类 Holder将在Singleton初始化之后立刻初始化
+ * 基于静态内部类实现单例模式: 内部类 Holder将在Singleton初始化之后立刻初始化
  * </p>
  *
  * @author Leo

@@ -2,7 +2,7 @@ package com.sen.interview.juc.volatile_;
 
 /**
  * <p>
- * 基于 volatile 双重检测.
+ * 基于 volatile 双重检测实现单例模式.
  * </p>
  *
  * @author Leo
