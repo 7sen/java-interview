@@ -51,15 +51,15 @@ class Man implements Person {
 
 class PersonInvocationHandler implements InvocationHandler {
 
-    private Person person;
+    private Object target;
 
-    public PersonInvocationHandler(Person person) {
-        this.person = person;
+    public PersonInvocationHandler(Object target) {
+        this.target = target;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-        return method.invoke(person, args);
+        return method.invoke(target, args);
     }
 }
