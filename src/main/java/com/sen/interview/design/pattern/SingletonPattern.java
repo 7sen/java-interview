@@ -1,4 +1,4 @@
-package com.sen.interview.juc.design.pattern;
+package com.sen.interview.design.pattern;
 
 import com.sen.interview.juc.volatile_.SingletonDemo2;
 import java.util.concurrent.TimeUnit;

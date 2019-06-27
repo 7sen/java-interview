@@ -1,4 +1,4 @@
-package com.sen.interview.juc.design.pattern;
+package com.sen.interview.design.pattern;
 
 /**
  * <p>

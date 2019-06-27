@@ -1,4 +1,4 @@
-package com.sen.interview.juc.design.pattern.proxy;
+package com.sen.interview.design.pattern.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

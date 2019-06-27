@@ -1,4 +1,4 @@
-package com.sen.interview.juc.design.pattern.proxy;
+package com.sen.interview.design.pattern.proxy;
 
 import java.lang.reflect.Method;
 import net.sf.cglib.proxy.Enhancer;
@@ -19,7 +19,7 @@ public class CglibDynamicProxy {
 
     public static void main(String[] args) {
         // 生成 Cglib 代理类
-        Woman proxy = (Woman) CglibProxy.getProxy(new Woman());
+        Woman proxy = (Woman) CglibProxy.getInstance(new Woman());
         // 调用相关方法
         proxy.eat();
         proxy.sleep();
@@ -50,7 +50,7 @@ class CglibProxy implements MethodInterceptor {
         return method.invoke(target, objects);
     }
 
-    public static Object getProxy(Object target) {
+    public static Object getInstance(Object target) {
         Enhancer enhancer = new Enhancer();
         // 设置需要代理的对象
         enhancer.setSuperclass(target.getClass());
