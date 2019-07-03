@@ -1,4 +1,4 @@
-package com.sen.interview.juc.queue;
+package com.sen.interview.juc.lock;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
