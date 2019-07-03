@@ -20,20 +20,20 @@ public class SortAlg {
             int temp = arr[i];
             int j = 0; // 插入的位置
             for (j = i; j > 0; j--) {
-                if (arr[j - 1] < temp) {
-                    arr[j] = arr[j - 1];
+                if (arr[j - 1] > temp) {
+                    arr[j] = arr[j - 1]; // 移动数据
                 } else {
                     break;
                 }
             }
-            arr[j] = temp;
+            arr[j] = temp;  // 插入数据
         }
 
         Arrays.stream(arr).forEach(a -> System.err.print(a));
     }
 
     /**
-     * 选择排序.时间复杂度O(n²)
+     * 3、 选择排序.时间复杂度O(n²)
      *
      * @param arr
      */
@@ -53,7 +53,7 @@ public class SortAlg {
     }
 
     /**
-     * 插入排序.时间复杂度O(n²)
+     * 2、插入排序.时间复杂度O(n²)
      *
      * @param arr
      */
