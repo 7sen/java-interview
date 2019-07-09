@@ -16,21 +16,64 @@ public class SortAlg {
 
         int[] arr = new int[]{8, 2, 1, 7, 6};
 
-        for (int i = 0; i < arr.length; i++) {
-            int temp = arr[i];
-            int j = 0; // 插入的位置
-            for (j = i; j > 0; j--) {
-                if (arr[j - 1] > temp) {
-                    arr[j] = arr[j - 1]; // 移动数据
-                } else {
-                    break;
-                }
-            }
-            arr[j] = temp;  // 插入数据
-        }
+        QuickSort.unilateralScan(arr, 0, arr.length - 1);
 
         Arrays.stream(arr).forEach(a -> System.err.print(a));
     }
+
+    /**
+     * 4、快速排序.算法复杂度O(nlogn)
+     *
+     * @param arr
+     */
+    static class QuickSort {
+
+        /**
+         * 单边扫描.
+         *
+         * @param arr
+         * @param startIndex
+         * @param endIndex
+         */
+        private static void unilateralScan(int[] arr, int startIndex, int endIndex) {
+            if (endIndex <= startIndex) {
+                return;
+            }
+            //切分
+            int pivotIndex = partition(arr, startIndex, endIndex);
+            unilateralScan(arr, startIndex, pivotIndex - 1);
+            unilateralScan(arr, pivotIndex + 1, endIndex);
+        }
+
+        /**
+         * 单边扫描切分.
+         *
+         * @param arr
+         * @param startIndex
+         * @param endIndex
+         * @return
+         */
+        private static int partition(int[] arr, int startIndex, int endIndex) {
+            int pivot = arr[startIndex];//取基准值
+            int mark = startIndex;//Mark初始化为起始下标
+
+            for (int i = startIndex + 1; i <= endIndex; i++) {
+                if (arr[i] < pivot) {
+                    //小于基准值 则mark+1，并交换位置。
+                    mark++;
+                    int p = arr[mark];
+                    arr[mark] = arr[i];
+                    arr[i] = p;
+                }
+            }
+            //基准值与mark对应元素调换位置
+            arr[startIndex] = arr[mark];
+            arr[mark] = pivot;
+            return mark;
+        }
+
+    }
+
 
     /**
      * 3、 选择排序.时间复杂度O(n²)
