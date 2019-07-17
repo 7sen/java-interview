@@ -36,8 +36,8 @@ public class BinaryTreeTraverse {
 class BinaryTree {
 
     private String data;
-    private BinaryTree leftTree;
-    private BinaryTree rightTree;
+    private BinaryTree left;
+    private BinaryTree right;
 
     public BinaryTree init() {
         BinaryTree G = new BinaryTree("D", null, null);
@@ -61,11 +61,11 @@ class BinaryTree {
      */
     public void firstOrderTraversal(BinaryTree root) {
         printBinaryTree(root);
-        if (root.getLeftTree() != null) {
-            firstOrderTraversal(root.getLeftTree());
+        if (root.getLeft() != null) {
+            firstOrderTraversal(root.getLeft());
         }
-        if (root.getRightTree() != null) {
-            firstOrderTraversal(root.getRightTree());
+        if (root.getRight() != null) {
+            firstOrderTraversal(root.getRight());
         }
     }
 
@@ -75,12 +75,12 @@ class BinaryTree {
      * @param root
      */
     public void inOrderTraversal(BinaryTree root) {
-        if (root.getLeftTree() != null) {
-            inOrderTraversal(root.getLeftTree());
+        if (root.getLeft() != null) {
+            inOrderTraversal(root.getLeft());
         }
         printBinaryTree(root);
-        if (root.getRightTree() != null) {
-            inOrderTraversal(root.getRightTree());
+        if (root.getRight() != null) {
+            inOrderTraversal(root.getRight());
         }
     }
 
@@ -90,11 +90,11 @@ class BinaryTree {
      * @param root
      */
     public void postOrderTraversal(BinaryTree root) {
-        if (root.getLeftTree() != null) {
-            postOrderTraversal(root.getLeftTree());
+        if (root.getLeft() != null) {
+            postOrderTraversal(root.getLeft());
         }
-        if (root.getRightTree() != null) {
-            postOrderTraversal(root.getRightTree());
+        if (root.getRight() != null) {
+            postOrderTraversal(root.getRight());
         }
         printBinaryTree(root);
     }

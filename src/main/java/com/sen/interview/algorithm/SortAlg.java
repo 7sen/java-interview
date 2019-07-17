@@ -14,7 +14,7 @@ public class SortAlg {
 
     public static void main(String[] args) {
 
-        int[] arr = new int[]{8, 2, 1, 7, 6};
+        int[] arr = new int[]{8, 2, 1, 7, 6, 5};
 
         QuickSort.sort(arr, 0, arr.length - 1);
 
@@ -40,7 +40,7 @@ public class SortAlg {
                 return;
             }
             // 切分
-            int pivotIndex = bilateralScan(arr, startIndex, endIndex);
+            int pivotIndex = unilateralScan(arr, startIndex, endIndex);
             sort(arr, startIndex, pivotIndex - 1);
             sort(arr, pivotIndex + 1, endIndex);
         }
@@ -54,19 +54,19 @@ public class SortAlg {
          * @return
          */
         private static int unilateralScan(int[] arr, int startIndex, int endIndex) {
-            int pivot = arr[startIndex];//取基准值
-            int mark = startIndex;//Mark初始化为起始下标
+            int pivot = arr[startIndex];// 取基准值
+            int mark = startIndex;// Mark初始化为起始下标
 
             for (int i = startIndex + 1; i <= endIndex; i++) {
                 if (arr[i] < pivot) {
-                    //小于基准值 则mark+1，并交换位置。
+                    // 小于基准值 则mark+1，并交换位置。
                     mark++;
                     int p = arr[mark];
                     arr[mark] = arr[i];
                     arr[i] = p;
                 }
             }
-            //基准值与mark对应元素调换位置
+            // 基准值与mark对应元素调换位置
             arr[startIndex] = arr[mark];
             arr[mark] = pivot;
             return mark;
@@ -81,43 +81,20 @@ public class SortAlg {
          * @return
          */
         private static int bilateralScan(int[] arr, int startIndex, int endIndex) {
-            int left = startIndex;
-            int right = endIndex;
-            int pivot = arr[startIndex];// 取第一个元素为基准值
-
-            while (true) {
-                // 从左往右扫描
-                while (arr[left] <= pivot) {
-                    left++;
-                    if (left == right) {
-                        break;
-                    }
-                }
-
-                // 从右往左扫描
-                while (pivot < arr[right]) {
+            Integer pivot = arr[startIndex];
+            int left = startIndex, right = endIndex;
+            while (left < right) {
+                while (arr[right] >= pivot && left < right) {
                     right--;
-                    if (left == right) {
-                        break;
-                    }
                 }
-
-                // 左右指针相遇
-                if (left >= right) {
-                    break;
-                }
-
-                // 交换左右数据
-                int temp = arr[left];
                 arr[left] = arr[right];
-                arr[right] = temp;
+                while (arr[left] <= pivot && left < right) {
+                    left++;
+                }
+                arr[right] = arr[left];
             }
-
-            // 将基准值插入序列
-            int temp = arr[startIndex];
-            arr[startIndex] = arr[right];
-            arr[right] = temp;
-            return right;
+            arr[left] = pivot;
+            return left;
         }
 
     }
