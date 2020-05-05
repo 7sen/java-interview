@@ -6,8 +6,8 @@
     <groupId>com.sen</groupId>
     <artifactId>java-interview</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>java-review</name>
-    <description>Demo project for Java Review</description>
+    <name>java-interview</name>
+    <description>Demo project for Java Interview.</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -43,8 +43,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
