@@ -1,6 +1,11 @@
 package com.shensen.interview.algorithm.sort;
 
+import com.alibaba.fastjson.JSON;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * 堆排序实现
@@ -12,59 +17,56 @@ public class HeapSort {
 
     public static void main(String[] args) {
         int[] array = new int[]{1, 9, 3, 5, 6, 8, 4, 7, 0};
+
+        PriorityQueue<Integer> queue = new PriorityQueue<>(array.length, Comparator.naturalOrder());
+        for (int arr : array) {
+            queue.add(arr);
+        }
+        List<Integer> list = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            list.add(queue.poll());
+        }
+        System.out.println(Arrays.toString(list.toArray()));
+
         System.out.println(Arrays.toString(sort(array)));
     }
 
-    public static int[] sort(int[] array) {
-        // 对 arr 进行拷贝，不改变参数内容
-        int[] arr = Arrays.copyOf(array, array.length);
-        System.out.println(Arrays.toString(arr));
-
+    public static int[] sort(int[] arr) {
         int len = arr.length;
-        // 构建堆
         buildHeap(arr, len);
-
-        System.out.println(Arrays.toString(arr));
-
-        for (int i = len - 1; i > 0; i--) {
-            // 将堆顶元素与末位元素对换
+        int i;
+        for (i = len - 1; i >= 0; i--) {
             swap(arr, 0, i);
-            // 隐藏堆尾元素
-            len--;
-            // 将堆顶元素下沉，将最大元素浮到堆顶来
-            sink(arr, 0, len);
+            heapify(arr, 0, i);
         }
         return arr;
     }
 
-    private static void buildHeap(int[] arr, int len) {
-        for (int i = len / 2; i >= 0; i--) {
-            sink(arr, i, len);
+    private static void buildHeap(int[] arr, int n) {
+        for (int i = (n - 1) / 2; i >= 0; i--) {
+            heapify(arr, i, n);
         }
     }
 
-    private static void sink(int[] arr, int i, int len) {
+    private static void heapify(int[] arr, int i, int n) {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        int largest = i;
-
-        if (left < len && arr[left] > arr[largest]) {
-            largest = left;
+        int max = i;
+        if (left < n && arr[left] > arr[max]) {
+            max = left;
         }
-
-        if (right < len && arr[right] > arr[largest]) {
-            largest = right;
+        if (right < n && arr[right] > arr[max]) {
+            max = right;
         }
-
-        if (largest != i) {
-            swap(arr, i, largest);
-            sink(arr, largest, len);
+        if (max != i) {
+            swap(arr, i, max);
+            heapify(arr, max, n);
         }
     }
 
-    private static void swap(int[] arr, int i, int j) {
+    private static void swap(int[] arr, int i, int max) {
         int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        arr[i] = arr[max];
+        arr[max] = temp;
     }
 }
