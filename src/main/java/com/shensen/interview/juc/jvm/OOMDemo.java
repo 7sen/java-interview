@@ -1,13 +1,11 @@
 package com.shensen.interview.juc.jvm;
 
-import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
-import net.sf.cglib.proxy.MethodProxy;
 
 /**
  * <p>
@@ -20,6 +18,7 @@ import net.sf.cglib.proxy.MethodProxy;
 public class OOMDemo {
 
     public static void main(String[] args) {
+        showOutOfMemoryError5();
     }
 
     /**
@@ -86,13 +85,8 @@ public class OOMDemo {
                 Enhancer enhancer = new Enhancer();
                 enhancer.setSuperclass(OOMTest.class);
                 enhancer.setUseCache(false);
-                enhancer.setCallback(new MethodInterceptor() {
-                    @Override
-                    public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy)
-                            throws Throwable {
-                        return methodProxy.invokeSuper(o, args);
-                    }
-                });
+                enhancer.setCallback(
+                        (MethodInterceptor) (o, method, args, methodProxy) -> methodProxy.invokeSuper(o, args));
                 enhancer.create();
             }
         } catch (Throwable e) {

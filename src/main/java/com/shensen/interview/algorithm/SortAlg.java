@@ -40,7 +40,7 @@ public class SortAlg {
                 return;
             }
             // 切分
-            int pivotIndex = unilateralScan(arr, startIndex, endIndex);
+            int pivotIndex = bilateralScan(arr, startIndex, endIndex);
             sort(arr, startIndex, pivotIndex - 1);
             sort(arr, pivotIndex + 1, endIndex);
         }
@@ -72,6 +72,7 @@ public class SortAlg {
             return mark;
         }
 
+
         /**
          * 双边扫描
          *
@@ -96,7 +97,6 @@ public class SortAlg {
             arr[left] = pivot;
             return left;
         }
-
     }
 
 

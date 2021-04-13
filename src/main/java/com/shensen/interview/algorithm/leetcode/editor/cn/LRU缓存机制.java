@@ -61,10 +61,10 @@ package com.shensen.interview.algorithm.leetcode.editor.cn;
 import java.util.HashMap;
 import java.util.Map;
 
-class LRUCache<K,V> {
+class LRUCache<K, V> {
 
     public static void main(String[] args) {
-        LRUCache<Integer,Integer> cache = new LRUCache(2);
+        LRUCache<Integer, Integer> cache = new LRUCache(2);
         cache.put(1, 1);
         cache.put(2, 2);
         cache.put(3, 3);
@@ -77,7 +77,7 @@ class LRUCache<K,V> {
     private Map<K, Node<K, V>> map;
     private DoubleLinkedList<K, V> doubleLinkedList;
 
-    public LRUCache(int cacheSize) {
+    LRUCache(int cacheSize) {
         this.cacheSize = cacheSize;
         map = new HashMap<>();
         doubleLinkedList = new DoubleLinkedList<>();
@@ -140,7 +140,7 @@ class LRUCache<K,V> {
                 sb.append("链表结构:[" + prev.key + "," + prev.val + "] ");
                 flag = true;
             }
-            sb.append(flag?"[":"链表结构:[" + key + "," + val + "]");
+            sb.append(flag ? "[" : "链表结构:[" + key + "," + val + "]");
             if (null != next.key && null != next.next) {
                 sb.append(" [" + next.key + "," + next.val + "]");
             }

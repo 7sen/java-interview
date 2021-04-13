@@ -1,6 +1,5 @@
 package com.shensen.interview.algorithm.sort;
 
-import com.alibaba.fastjson.JSON;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -17,7 +16,7 @@ public class HeapSort {
 
     public static void main(String[] args) {
         int[] array = new int[]{1, 9, 3, 5, 6, 8, 4, 7, 0};
-
+        // 基于优先队列实现
         PriorityQueue<Integer> queue = new PriorityQueue<>(array.length, Comparator.naturalOrder());
         for (int arr : array) {
             queue.add(arr);
