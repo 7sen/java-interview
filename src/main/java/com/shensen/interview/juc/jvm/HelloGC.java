@@ -1,5 +1,7 @@
 package com.shensen.interview.juc.jvm;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryPoolMXBean;
 import java.util.HashMap;
 import javax.print.DocFlavor.STRING;
 
@@ -31,6 +33,12 @@ import javax.print.DocFlavor.STRING;
 public class HelloGC {
 
     public static void main(String[] args) {
+        byte[] array = new byte[300 * 1024 * 1024]; // 734,003,200
+        for (MemoryPoolMXBean memoryPoolMXBean : ManagementFactory.getMemoryPoolMXBeans()) {
+            System.out.println(
+                    memoryPoolMXBean.getName() + "  总量:" + memoryPoolMXBean.getUsage().getCommitted() + "   使用的内存:"
+                            + memoryPoolMXBean.getUsage().getUsed());
+        }
     }
 
     /**
