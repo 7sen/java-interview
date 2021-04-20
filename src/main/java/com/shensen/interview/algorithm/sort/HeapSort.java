@@ -32,10 +32,13 @@ public class HeapSort {
 
     public static int[] sort(int[] arr) {
         int len = arr.length;
+        // 初始化堆，保证所有父节点都比子节点大
         buildHeap(arr, len);
-        int i;
-        for (i = len - 1; i >= 0; i--) {
+        // 进行n-1次循环，完成排序
+        for (int i = len - 1; i >= 0; i--) {
+            // 最后一个元素和第一元素进行交换
             swap(arr, 0, i);
+            // 筛选 [0] 结点，得到i-1个结点的堆
             heapify(arr, 0, i);
         }
         return arr;
