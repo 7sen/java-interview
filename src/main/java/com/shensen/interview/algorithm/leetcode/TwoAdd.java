@@ -1,5 +1,7 @@
 package com.shensen.interview.algorithm.leetcode;
 
+import com.shensen.interview.algorithm.leetcode.editor.cn.data.ListNode;
+
 /**
  * <p>
  * 题目：两数相加
@@ -19,7 +21,7 @@ package com.shensen.interview.algorithm.leetcode;
  */
 public class TwoAdd {
 
-    public static ListNode addTwo(ListNode<Integer> l1, ListNode<Integer> l2) {
+    public static ListNode addTwo(ListNode l1, ListNode l2) {
         ListNode head = null, tail = null;
         int carry = 0;
         while (l1 != null || l2 != null) {
@@ -62,20 +64,5 @@ public class TwoAdd {
             System.out.print(result.next.val);
             result = result.next;
         }
-    }
-}
-
-class ListNode<E> {
-
-    E val;
-    ListNode<E> next;
-
-    ListNode(E val) {
-        this.val = val;
-    }
-
-    ListNode(E val, ListNode next) {
-        this.val = val;
-        this.next = next;
     }
 }

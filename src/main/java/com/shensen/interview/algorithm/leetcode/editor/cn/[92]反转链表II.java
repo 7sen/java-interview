@@ -36,6 +36,8 @@
 
 package com.shensen.interview.algorithm.leetcode.editor.cn;
 
+import com.shensen.interview.algorithm.leetcode.ListNode;
+
 class ReverseLinkedListIi {
 
     public static void main(String[] args) {
@@ -60,23 +62,6 @@ class ReverseLinkedListIi {
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
-    static class ListNode {
-
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     class Solution {
 
