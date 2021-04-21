@@ -1,4 +1,4 @@
-package com.shensen.interview.algorithm;
+package com.shensen.interview.algorithm.binarytree;
 
 import java.util.LinkedList;
 import java.util.Queue;

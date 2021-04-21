@@ -1,6 +1,6 @@
 package com.shensen.interview.algorithm.leetcode;
 
-import com.shensen.interview.algorithm.leetcode.editor.cn.data.ListNode;
+import com.shensen.interview.algorithm.leetcode.editor.cn.ListNode;
 
 /**
  * <p>

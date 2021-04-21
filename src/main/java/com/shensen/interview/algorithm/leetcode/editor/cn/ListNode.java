@@ -1,4 +1,4 @@
-package com.shensen.interview.algorithm.leetcode.editor.cn.data;
+package com.shensen.interview.algorithm.leetcode.editor.cn;
 
 public class ListNode {
 

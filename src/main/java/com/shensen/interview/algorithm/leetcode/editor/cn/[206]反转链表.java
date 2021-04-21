@@ -13,8 +13,6 @@
 
 package com.shensen.interview.algorithm.leetcode.editor.cn;
 
-import com.shensen.interview.algorithm.leetcode.ListNode;
-
 class ReverseLinkedList {
 
     public static void main(String[] args) {

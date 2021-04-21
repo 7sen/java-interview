@@ -1,5 +1,7 @@
 package com.shensen.interview.algorithm;
 
+import com.shensen.interview.algorithm.binarytree.BinaryTree;
+
 /**
  * <p>
  * 题目：给定一个二叉树，判断它是否是高度平衡的二叉树。
