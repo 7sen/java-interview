@@ -26,7 +26,7 @@ class ReverseLinkedList {
         B.next = C;
         ListNode D = new ListNode(5);
         C.next = D;
-        head = solution.reverseList(head);
+        head = solution.reverseListTwo(head);
         while (null != head) {
             System.out.println(head.val);
             head = head.next;
@@ -35,6 +35,7 @@ class ReverseLinkedList {
 
     class Solution {
 
+        // 递归拆解
         public ListNode reverseList(ListNode head) {
             if (head == null || head.next == null) {
                 return head;
@@ -43,6 +44,21 @@ class ReverseLinkedList {
             head.next.next = head;
             head.next = null;
             return newHead;
+        }
+
+        // Iterative 解法
+        public ListNode reverseListTwo(ListNode head) {
+            ListNode prev = null;
+            ListNode curr = head;
+
+            while(curr != null) {
+                ListNode nxt = curr.next;
+                curr.next = prev; // 翻转箭头
+                prev = curr; //三人行
+                curr = nxt; //三人行
+            }
+
+            return prev;
         }
     }
 

@@ -65,19 +65,21 @@ class ReverseLinkedListIi {
 
         public ListNode reverseBetween(ListNode head, int left, int right) {
             // 设置 dummyNode 节点
-            ListNode dummyNode = new ListNode(-1);
+            ListNode dummyNode = new ListNode(0);
             dummyNode.next = head;
-            ListNode pre = dummyNode;
+            ListNode prev = dummyNode;
+
             for (int i = 0; i < left - 1; i++) {
-                pre = pre.next;
+                prev = prev.next;
             }
-            ListNode cur = pre.next;
+
+            ListNode curr = prev.next;
             ListNode next;
             for (int i = 0; i < right - left; i++) {
-                next = cur.next;
-                cur.next = next.next;
-                next.next = pre.next;
-                pre.next = next;
+                next = curr.next;
+                curr.next = next.next;
+                next.next = prev.next;
+                prev.next = next;
             }
             return dummyNode.next;
         }

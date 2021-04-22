@@ -1,6 +1,4 @@
-package com.shensen.interview.algorithm;
-
-import com.shensen.interview.algorithm.binarytree.BinaryTree;
+package com.shensen.interview.algorithm.binarytree;
 
 /**
  * <p>
