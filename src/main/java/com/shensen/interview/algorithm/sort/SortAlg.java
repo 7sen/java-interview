@@ -1,4 +1,4 @@
-package com.shensen.interview.algorithm;
+package com.shensen.interview.algorithm.sort;
 
 import java.util.Arrays;
 
@@ -16,17 +16,43 @@ public class SortAlg {
 
         int[] arr = new int[]{8, 2, 1, 7, 6, 5};
 
-        QuickSort.sort(arr, 0, arr.length - 1);
+        QuickSort.quickSort(arr, 0, arr.length - 1);
 
-        Arrays.stream(arr).forEach(a -> System.err.print(a));
+        System.out.println(Arrays.toString(arr));
     }
 
     /**
      * 4、快速排序.算法复杂度O(nlogn)
-     *
-     * @param arr
      */
     static class QuickSort {
+
+        private static int[] quickSort(int[] arr, int low, int high) {
+            // 选出基准值
+            int pivot = arr[low];
+            // 从前向后索引
+            int start = low;
+            // 从后向前索引
+            int end = high;
+            while (start < end) {
+                // 从后向前
+                while (end > start && arr[end] >= pivot) {
+                    end--;
+                }
+                if (arr[end] <= pivot) {
+                    swap(arr, start, end);
+                }
+                // 从前向后
+                while (end > start && arr[start] <= pivot) {
+                    start++;
+                }
+                if (arr[start] >= pivot) {
+                    swap(arr, start, end);
+                }
+            }
+            if (start > low) quickSort(arr, low, start - 1);
+            if (end < high) quickSort(arr, end + 1, high);
+            return arr;
+        }
 
         /**
          * 排序.
@@ -161,4 +187,9 @@ public class SortAlg {
         }
     }
 
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = temp;
+    }
 }
