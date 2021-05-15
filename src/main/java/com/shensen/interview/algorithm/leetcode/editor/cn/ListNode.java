@@ -1,15 +1,18 @@
 package com.shensen.interview.algorithm.leetcode.editor.cn;
 
-public class ListNode {
+public class ListNode<T> {
 
-    public int val;
-    public ListNode next;
+    public T val;
+    public ListNode<T> next;
 
-    public ListNode(int val) {
+    public ListNode() {
+    }
+
+    public ListNode(T val) {
         this.val = val;
     }
 
-    public ListNode(int val, ListNode next) {
+    public ListNode(T val, ListNode<T> next) {
         this.val = val;
         this.next = next;
     }
@@ -20,5 +23,13 @@ public class ListNode {
 
     public void setNext(ListNode next) {
         this.next = next;
+    }
+
+    public void addNode(ListNode e) {
+        if (this.next == null) {
+            this.next = e;
+        } else {
+            this.next.addNode(e);
+        }
     }
 }

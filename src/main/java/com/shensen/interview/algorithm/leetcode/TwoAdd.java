@@ -21,7 +21,7 @@ import com.shensen.interview.algorithm.leetcode.editor.cn.ListNode;
  */
 public class TwoAdd {
 
-    public static ListNode addTwo(ListNode l1, ListNode l2) {
+    public static ListNode addTwo(ListNode<Integer> l1, ListNode<Integer> l2) {
         ListNode head = null, tail = null;
         int carry = 0;
         while (l1 != null || l2 != null) {
