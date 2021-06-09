@@ -1,4 +1,4 @@
-package com.shensen.interview.juc.jvm;
+package com.shensen.interview.jvm;
 
 import java.util.HashMap;
 import java.util.WeakHashMap;

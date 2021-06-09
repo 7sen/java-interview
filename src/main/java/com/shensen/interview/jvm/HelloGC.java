@@ -1,9 +1,7 @@
-package com.shensen.interview.juc.jvm;
+package com.shensen.interview.jvm;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryPoolMXBean;
-import java.util.HashMap;
-import javax.print.DocFlavor.STRING;
 
 /**
  * <p>
