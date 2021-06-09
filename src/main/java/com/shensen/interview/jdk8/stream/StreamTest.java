@@ -19,7 +19,8 @@ public class StreamTest {
     public static void main(String[] args) {
         List<String> strings = Arrays.asList("abc", "def", "gkh", "abc");
         //返回符合条件的stream
-        Stream<String> stringStream = strings.stream().filter(s -> "abc".equals(s));
+        Stream<String> stringStream = strings.stream().filter(s -> s.contains("a"));
+
         //计算流符合条件的流的数量
         long count = stringStream.count();
 
