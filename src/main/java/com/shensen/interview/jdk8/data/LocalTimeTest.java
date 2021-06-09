@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
@@ -30,6 +32,7 @@ public class LocalTimeTest {
         dateParse();
         // 日期相关操作
         pushWeek();
+        zonedDateTime();
     }
 
     private static void dateParse() {
@@ -99,4 +102,25 @@ public class LocalTimeTest {
                         DayOfWeek.SUNDAY));
     }
 
+    public static void zonedDateTime() {
+        //当前时区时间
+        ZonedDateTime zonedDateTime = ZonedDateTime.now();
+        System.out.println("当前时区时间: " + zonedDateTime);
+
+        //东京时间
+        ZoneId zoneId = ZoneId.of(ZoneId.SHORT_IDS.get("JST"));
+        ZonedDateTime tokyoTime = zonedDateTime.withZoneSameInstant(zoneId);
+        System.out.println("东京时间: " + tokyoTime);
+
+        // ZonedDateTime 转 LocalDateTime
+        LocalDateTime localDateTime = tokyoTime.toLocalDateTime();
+        System.out.println("东京时间转当地时间: " + localDateTime);
+
+        //LocalDateTime 转 ZonedDateTime
+        ZonedDateTime localZoned = localDateTime.atZone(ZoneId.systemDefault());
+        System.out.println("本地时区时间: " + localZoned);
+
+        localZoned = localDateTime.atZone(ZoneId.of(ZoneId.SHORT_IDS.get("CTT")));
+        System.out.println("本地时区时间: " + localZoned);
+    }
 }
