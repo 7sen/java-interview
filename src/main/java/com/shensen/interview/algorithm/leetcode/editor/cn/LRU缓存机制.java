@@ -148,7 +148,7 @@ class LRUCache<K, V> {
         }
     }
 
-    // 构建一个虚拟的双向链表,,里面安放的就是我们的Node
+    // 构建一个虚拟的双向链表,里面安放的就是我们的Node
     class DoubleLinkedList<K, V> {
 
         Node<K, V> head;

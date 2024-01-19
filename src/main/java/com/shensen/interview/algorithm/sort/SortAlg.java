@@ -16,7 +16,7 @@ public class SortAlg {
 
         int[] arr = new int[]{8, 2, 1, 7, 6, 5};
 
-        QuickSort.quickSort(arr, 0, arr.length - 1);
+        QuickSort.sort(arr, 0, arr.length - 1);
 
         System.out.println(Arrays.toString(arr));
     }
@@ -54,8 +54,44 @@ public class SortAlg {
             return arr;
         }
 
+        /* 选取三个元素的中位数*/
+        static int medianThree(int[] nums, int left, int mid, int right) {
+            // 此处使用异或运算来简化代码
+            // 异或规则为0 ^ 0 = 1 ^ 1 = 0, 0 ^ 1 = 1 ^ 0 = 1
+            if ((nums[left] < nums[mid]) ^ (nums[left] < nums[right])) return left;
+            else if ((nums[mid] < nums[left]) ^ (nums[mid] < nums[right])) return mid;
+            else return right;
+        }
+
+        /*
+         * 哨兵划分（三数取中值），基准优化
+         */
+        private static int midPartition(int[] nums, int left, int right) {
+            // 选取三个候选元素的中位数
+            int med = medianThree(nums, left, (left + right) / 2, right);
+            // 将中位数交换至数组最左端
+            swap(nums, left, med);
+            return partition(nums, left, right); // 返回基准数的索引
+        }
+
+        private static int partition(int[] nums, int left, int right) {
+            // 以nums[left] 作为基准数
+            int i = left, j = right;
+            while (i < j) {
+                while (i < j && nums[j] >= nums[left]) {
+                    j--; // 从右向左找首个小于基准数的元素
+                }
+                while (i < j && nums[i] <= nums[left]) {
+                    i++; // 从左向右找首个大于基准数的元素
+                }
+                swap(nums, i, j); // 交换这两个元素
+            }
+            swap(nums, i, left); // 将基准数交换至两子数组的分界线
+            return i; // 返回基准数的索引
+        }
+
         /**
-         * 排序.
+         * 快速排序.
          *
          * @param arr
          * @param startIndex
@@ -66,7 +102,7 @@ public class SortAlg {
                 return;
             }
             // 切分
-            int pivotIndex = bilateralScan(arr, startIndex, endIndex);
+            int pivotIndex = partition(arr, startIndex, endIndex);
             sort(arr, startIndex, pivotIndex - 1);
             sort(arr, pivotIndex + 1, endIndex);
         }
@@ -77,6 +113,7 @@ public class SortAlg {
          * @param arr
          * @param startIndex
          * @param endIndex
+         *
          * @return
          */
         private static int unilateralScan(int[] arr, int startIndex, int endIndex) {
@@ -105,6 +142,7 @@ public class SortAlg {
          * @param arr
          * @param startIndex
          * @param endIndex
+         *
          * @return
          */
         private static int bilateralScan(int[] arr, int startIndex, int endIndex) {
@@ -188,8 +226,8 @@ public class SortAlg {
     }
 
     private static void swap(int[] arr, int i, int j) {
-        int temp = arr[j];
-        arr[j] = arr[i];
-        arr[i] = temp;
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
