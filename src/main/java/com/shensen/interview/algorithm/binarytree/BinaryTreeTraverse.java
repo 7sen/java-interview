@@ -25,7 +25,11 @@ public class BinaryTreeTraverse {
         tree.postOrderTraversal(root);
         System.err.print("\n层序：");
         tree.sequenceTraversal(root);
-    }
 
+        BinaryTree.insert(root, "N");
+        System.err.print("\n插入后：");
+        tree.sequenceTraversal(root);
+        System.err.println();
+    }
 }
 

@@ -31,9 +31,9 @@ public class JDKDynamicProxy {
 
 interface Person {
 
-    public void eat();
+    void eat();
 
-    public void sleep();
+    void sleep();
 }
 
 class Man implements Person {

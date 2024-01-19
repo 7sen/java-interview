@@ -15,6 +15,10 @@ public class BinaryTree {
     private BinaryTree left;
     private BinaryTree right;
 
+    public BinaryTree(String data) {
+        this.data = data;
+    }
+
     public BinaryTree init() {
         BinaryTree K = new BinaryTree("K", null, null);
         BinaryTree J = new BinaryTree("J", null, null);
@@ -97,5 +101,30 @@ public class BinaryTree {
                 queue.offer(tree.getRight());
             }
         }
+    }
+
+    /**
+     * 插入节点
+     *
+     * @param data
+     */
+    public static void insert(BinaryTree root, String data) {
+        if (null == root) return;
+        // 循环查找，越过叶节点跳出
+        BinaryTree curr = root, pre = null;
+        while (null != curr) {
+            if (data.compareTo(curr.getData()) == 0) return;
+            pre = curr;
+            if (data.compareTo(curr.getData()) < 0) {
+                curr = curr.getLeft();
+            } else if (data.compareTo(curr.getData()) > 0) {
+                curr = curr.getRight();
+            }
+        }
+
+        // 插入节点
+        BinaryTree tree = new BinaryTree(data);
+        if (pre.getData().compareTo(data) < 0) pre.setRight(tree);
+        if (pre.getData().compareTo(data) > 0) pre.setLeft(tree);
     }
 }
